@@ -216,10 +216,10 @@ class assign_submission_ilsp extends assign_submission_plugin {
         profile_load_data($user);
 
         // Set the enabled flags and use them to trim the ilsp array to only return enabled ones.
-        $ilsps['ilsp_coversheets_dyslexia']['enabled'] = $user->{'profile_field_'.$profiledyslexia} > 0;
-        $ilsps['ilsp_coversheets_dyscalculia']['enabled'] = $user->{'profile_field_'.$profiledyscalculia} > 0;
-        $ilsps['ilsp_coversheets_deafness']['enabled'] = $user->{'profile_field_'.$profiledeafness} > 0;
-        $ilsps['ilsp_coversheets_visualimpairment']['enabled'] = $user->{'profile_field_'.$profilevisualimpairment} > 0;
+        $ilsps['ilsp_coversheets_dyslexia']['enabled'] = !empty($user->{'profile_field_'.$profiledyslexia});
+        $ilsps['ilsp_coversheets_dyscalculia']['enabled'] = !empty($user->{'profile_field_'.$profiledyscalculia});
+        $ilsps['ilsp_coversheets_deafness']['enabled'] = !empty($user->{'profile_field_'.$profiledeafness});
+        $ilsps['ilsp_coversheets_visualimpairment']['enabled'] = !empty($user->{'profile_field_'.$profilevisualimpairment});
 
         foreach ($ilsps as $type => $value) {
             if (!$value['enabled']) {
