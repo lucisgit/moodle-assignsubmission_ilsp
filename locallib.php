@@ -222,7 +222,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
         $ilsps['ilsp_coversheets_visualimpairment']['enabled'] = !empty($user->{'profile_field_'.$profilevisualimpairment});
 
         foreach ($ilsps as $type => $value) {
-            if (!$value['enabled']) {
+            if (!$value['enabled'] || empty($value['itemid'])) {
                 unset($ilsps[$type]);
             }
         }
@@ -240,7 +240,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
             // Get the config and set up the basic parts of the coversheet array.
             if (empty($namedyslexia = get_config('assignsubmission_ilsp', 'dyslexia_name')) ||
                 empty($namedyscalculia = get_config('assignsubmission_ilsp', 'dyscalculia_name')) ||
-                empty($namedeafness = get_config('assignsubmission_ilsp', 'deafness_name'))||
+                empty($namedeafness = get_config('assignsubmission_ilsp', 'deafness_name')) ||
                 empty($namevisualimpairment = get_config('assignsubmission_ilsp', 'visualimpairment_name'))) {
                 return;
             }
@@ -267,9 +267,11 @@ class assign_submission_ilsp extends assign_submission_plugin {
                     'timemodified',
                     false);
 
-                if (count($files) > 0) {
-                    $ilsps[$key]['file'] = array_shift($files);
+                if (!count($files)) {
+                    unset($ilsps[$key]);
+                    continue;
                 }
+                $ilsps[$key]['file'] = array_shift($files);
             }
             $this->coversheets = $ilsps;
         }
