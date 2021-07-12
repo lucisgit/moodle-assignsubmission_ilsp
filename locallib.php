@@ -383,7 +383,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return bool - if false - this plugin will not accept submissions / feedback
      */
     public function is_enabled() {
-        if ($this->assignment->get_instance()->teamsubmission) {
+        if ($this->assignment->has_instance() && $this->assignment->get_instance()->teamsubmission) {
             return false;
         }
         return true;
