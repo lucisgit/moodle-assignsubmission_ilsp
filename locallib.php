@@ -195,8 +195,9 @@ class assign_submission_ilsp extends assign_submission_plugin {
     }
 
     /**
-     * Generate the isps for this user
-     * @param $user current user
+     * Generate the ilsps for this user.
+     *
+     * @param $user stdClass Current user
      * @return array|void
      * @throws coding_exception
      * @throws dml_exception
@@ -222,7 +223,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
         $ilsps['ilsp_coversheets_visualimpairment']['enabled'] = !empty($user->{'profile_field_'.$profilevisualimpairment});
 
         foreach ($ilsps as $type => $value) {
-            if (!$value['enabled'] || empty($value['itemid'])) {
+            if (!$value['enabled'] || !isset($value['itemid'])) {
                 unset($ilsps[$type]);
             }
         }
