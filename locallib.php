@@ -379,6 +379,16 @@ class assign_submission_ilsp extends assign_submission_plugin {
     }
 
     /**
+     * The ILSP plugin has no submission component so should not be counted
+     * when determining whether to show the edit submission link.
+     *
+     * @return bool
+     */
+    public function allow_submissions() {
+        return false;
+    }
+
+    /**
      * Allows hiding this plugin from the submission/feedback screen if it is not enabled.
      *
      * @return bool - if false - this plugin will not accept submissions / feedback
@@ -401,6 +411,15 @@ class assign_submission_ilsp extends assign_submission_plugin {
      */
     public function submission_is_empty(stdClass $data) {
         return false;
+    }
+
+    /**
+     * Return the plugin configs for external functions.
+     *
+     * @return array the list of settings
+     */
+    public function get_config_for_external() {
+        return (array) $this->get_config();
     }
 
     /**
