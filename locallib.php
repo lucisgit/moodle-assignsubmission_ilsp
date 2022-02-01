@@ -427,7 +427,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return array - An array of fileareas (keys) and descriptions (values)
      */
     public function get_file_areas() {
-        return array(ilsp_coversheets => $this->get_name());
+        return array('ilsp_coversheets' => $this->get_name());
     }
 }
 
