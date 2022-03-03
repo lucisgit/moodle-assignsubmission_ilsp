@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * This file contains the definition for the library class for ilsp submission plugin
  *
@@ -185,7 +200,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
         // Put a header on the grading panel page.
         if ($PAGE->pagetype == 'mod-assign-gradingpanel' && $hasilsps) {
             $html .= '<h3>ILSPs</h3>';
-            $html .= '<p>'.get_string('assignsubmission_ilsp_desciption', 'assignsubmission_ilsp').'</p>';
+            $html .= '<p>'.get_string('assignsubmission_ilsp_description', 'assignsubmission_ilsp').'</p>';
         }
         $this->htmlid = html_writer::random_id('assign_ilsp');
         $html .= '<div id="'.$this->htmlid.'">';
@@ -246,10 +261,10 @@ class assign_submission_ilsp extends assign_submission_plugin {
                 return;
             }
 
-            $ilsps['ilsp_coversheets_dyslexia']['itemid'] = ilsp_coversheets_dyslexia;
-            $ilsps['ilsp_coversheets_dyscalculia']['itemid'] = ilsp_coversheets_dyscalculia;
-            $ilsps['ilsp_coversheets_deafness']['itemid'] = ilsp_coversheets_deafness;
-            $ilsps['ilsp_coversheets_visualimpairment']['itemid'] = ilsp_coversheets_visualimpairment;
+            $ilsps['ilsp_coversheets_dyslexia']['itemid'] = ILSP_COVERSHEETS_DYSLEXIA;
+            $ilsps['ilsp_coversheets_dyscalculia']['itemid'] = ILSP_COVERSHEETS_DYSCALCULIA;
+            $ilsps['ilsp_coversheets_deafness']['itemid'] = ILSP_COVERSHEETS_DEAFNESS;
+            $ilsps['ilsp_coversheets_visualimpairment']['itemid'] = ILSP_COVERSHEETS_VISUALIMPAIRMENT;
 
             $ilsps['ilsp_coversheets_dyslexia']['name'] = $namedyslexia;
             $ilsps['ilsp_coversheets_dyscalculia']['name'] = $namedyscalculia;
