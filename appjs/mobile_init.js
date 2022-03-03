@@ -14,16 +14,44 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Enable assignsubmission_ilsp for editing in the mobile app.
+ * Initialize assignsubmission_ilsp with submission data in the mobile app.
  *
  * @package    assignsubmission_ilsp
  * @copyright  2021 Lancaster University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-var overrides = {
+var result = {
+    componentInit: function() {
+        var plugins = this.submission.plugins;
+        setTimeout(function() {
+            var template = document.getElementById('assignsubmission_ilsp_coversheets');
+            if (template !== null) {
+                // We don't want the ILSP template to display at all on the edit page.
+                if (document.getElementsByTagName('page-addon-mod-assign-edit').length > 0) {
+                    template.remove();
+                } else {
+                    plugins.forEach(function(plugin) {
+                        if (plugin.type === 'ilsp') {
+                            plugin.editorfields.forEach(function(field) {
+                                if (field.name === 'ilsp') {
+                                    template.querySelector('p').textContent = field.text;
+                                }
+                            });
+                        }
+                    });
+                    // We also don't want to display the template if it's empty.
+                    setTimeout(function() {
+                        if (template.querySelector('p').textContent === '') {
+                            template.remove();
+                        }
+                    });
+                }
+            }
+        }, 500);
+    },
     isEnabledForEdit: function() {
         return true;
     }
 };
-overrides;
+
+result;

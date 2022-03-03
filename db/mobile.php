@@ -19,8 +19,11 @@ $addons = [
         'handlers' => [
             'ilsp' => [
                 'delegate' => 'AddonModAssignSubmissionDelegate',
-                'init' => 'assignsubmission_ilsp_init',
+                'method'   => 'assignsubmission_ilsp_view',
             ],
+        ],
+        'lang' => [
+            ['ilsp', 'assignsubmission_ilsp'],
         ],
     ],
 ];

@@ -26,13 +26,19 @@ class mobile {
      * @param array $args Arguments (empty)
      * @return array Array with information required by app
      */
-    public static function assignsubmission_ilsp_init(array $args) : array {
-        global $CFG;
+    public static function assignsubmission_ilsp_view(array $args) : array {
+        global $CFG, $OUTPUT;
+
         return [
-                'templates' => [],
-                'javascript' => file_get_contents($CFG->dirroot . '/mod/assign/submission/ilsp/appjs/mobile_init.js'),
-                'otherdata' => '',
-                'files' => []
+            'templates' => [
+                [
+                    'id' => 'main',
+                    'html' => $OUTPUT->render_from_template('assignsubmission_ilsp/mobile_view_ilsp', null),
+                ],
+            ],
+            'javascript' => file_get_contents($CFG->dirroot . '/mod/assign/submission/ilsp/appjs/mobile_init.js'),
+            'otherdata' => '',
+            'files' => []
         ];
     }
 
