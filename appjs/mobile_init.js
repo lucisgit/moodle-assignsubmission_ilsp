@@ -34,14 +34,14 @@ var result = {
                         if (plugin.type === 'ilsp') {
                             plugin.editorfields.forEach(function(field) {
                                 if (field.name === 'ilsp') {
-                                    template.querySelector('p').textContent = field.text;
+                                    template.querySelector('p').innerHTML = field.text;
                                 }
                             });
                         }
                     });
                     // We also don't want to display the template if it's empty.
                     setTimeout(function() {
-                        if (template.querySelector('p').textContent === '') {
+                        if (template.querySelector('p').innerHTML === '') {
                             template.remove();
                         }
                     });
