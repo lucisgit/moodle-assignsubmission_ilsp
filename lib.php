@@ -24,8 +24,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 define('ILSP_COVERSHEETS_DYSLEXIA', 0);
 define('ILSP_COVERSHEETS_DYSCALCULIA', 1);
 define('ILSP_COVERSHEETS_DEAFNESS', 2);

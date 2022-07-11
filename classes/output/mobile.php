@@ -16,8 +16,6 @@
 
 namespace assignsubmission_ilsp\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 class mobile {
 
     /**
