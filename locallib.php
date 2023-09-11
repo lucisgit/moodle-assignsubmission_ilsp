@@ -380,7 +380,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return bool
      */
     public function is_empty(stdClass $submission) {
-        return false;
+        return true;
     }
 
     /**
