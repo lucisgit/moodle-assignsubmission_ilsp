@@ -355,16 +355,6 @@ class assign_submission_ilsp extends assign_submission_plugin {
     }
 
     /**
-     * Formatting for log info
-     *
-     * @param stdClass $submission The new submission
-     * @return string
-     */
-    public function format_for_log(stdClass $submission) {
-        return '';
-    }
-
-    /**
      * The assignment has been deleted - cleanup
      *
      * @return bool
