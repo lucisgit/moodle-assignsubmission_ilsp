@@ -15,9 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains the moodle hooks for the ilsp submission plugin
- *
- * This class provides all the functionality for the new assign module.
+ * This file contains the moodle hooks for the ILSP submission plugin.
  *
  * @package assignsubmission_ilsp
  * @copyright 2019 Lancaster University
@@ -41,14 +39,7 @@ define('ILSP_COVERSHEETS_VISUALIMPAIRMENT', 3);
  * @param array $options - List of options affecting file serving.
  * @return bool false if file not found, does not return if found - just send the file
  */
-function assignsubmission_ilsp_pluginfile($course,
-                                          $cm,
-                                          context $context,
-                                          $filearea,
-                                          $args,
-                                          $forcedownload,
-                                          array $options=array()) {
-
+function assignsubmission_ilsp_pluginfile($course, $cm, context $context, $filearea, $args, $forcedownload, array $options=[]) {
     require_login($course, false, $cm);
     $itemid = (int)array_shift($args);
 

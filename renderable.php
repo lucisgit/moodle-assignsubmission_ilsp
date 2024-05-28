@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains the definition for the renderable classes for the assignment
+ * This file contains the definition for the renderable classes for the ILSP submission plugin.
  *
  * @package assignsubmission_ilsp
  * @copyright 2019 Lancaster University
@@ -23,13 +23,14 @@
  */
 
 /**
- * An assign file class that extends rendererable class and is used by the assign module.
+ * A file class that extends the renderable class and is used by the ILSP plugin.
  *
- * @package   mod_assign
- * @copyright 2012 NetSpot {@link http://www.netspot.com.au}
+ * @package assignsubmission_ilsp
+ * @copyright 2019 Lancaster University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class ilsp_files implements renderable {
+
     /** @var context $context */
     public $context;
     /** @var string $context */
@@ -39,10 +40,8 @@ class ilsp_files implements renderable {
     /** @var stdClass $course */
     public $course;
 
-    public $tree;
-
     /**
-     * The constructor
+     * The constructor.
      *
      * @param context $context
      * @param int $sid
@@ -81,4 +80,5 @@ class ilsp_files implements renderable {
             $this->dir['files'][] = $file;
         }
     }
+
 }

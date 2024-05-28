@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file defines the admin settings for this plugin
+ * This file defines the admin settings for this plugin.
  *
  * @package   assignsubmission_ilsp
  * @copyright 2019 Lancaster University
@@ -36,19 +36,19 @@ $settings->add(new admin_setting_heading('assignsubmission_ilsp_cover_header',
 $settings->add(new admin_setting_configstoredfile('assignsubmission_ilsp/dyslexia_cover',
         get_string('assignsubmission_ilsp_dyslexia_cover', 'assignsubmission_ilsp'),
         get_string('assignsubmission_ilsp_dyslexia_cover_desc', 'assignsubmission_ilsp'), 'ilsp_coversheets',
-        ILSP_COVERSHEETS_DYSLEXIA, array('maxfiles' => 1, 'accepted_types' => array('.pdf'))));
+        ILSP_COVERSHEETS_DYSLEXIA, ['maxfiles' => 1, 'accepted_types' => ['.pdf']]));
 $settings->add(new admin_setting_configstoredfile('assignsubmission_ilsp/dyscalculia_cover',
         get_string('assignsubmission_ilsp_dyscalculia_cover', 'assignsubmission_ilsp'),
         get_string('assignsubmission_ilsp_dyscalculia_cover_desc', 'assignsubmission_ilsp'), 'ilsp_coversheets',
-        ILSP_COVERSHEETS_DYSCALCULIA, array('maxfiles' => 1, 'accepted_types' => array('.pdf'))));
+        ILSP_COVERSHEETS_DYSCALCULIA, ['maxfiles' => 1, 'accepted_types' => ['.pdf']]));
 $settings->add(new admin_setting_configstoredfile('assignsubmission_ilsp/deafness_cover',
         get_string('assignsubmission_ilsp_deafness_cover', 'assignsubmission_ilsp'),
         get_string('assignsubmission_ilsp_deafness_cover_desc', 'assignsubmission_ilsp'), 'ilsp_coversheets',
-        ILSP_COVERSHEETS_DEAFNESS, array('maxfiles' => 1, 'accepted_types' => array('.pdf'))));
+        ILSP_COVERSHEETS_DEAFNESS, ['maxfiles' => 1, 'accepted_types' => ['.pdf']]));
 $settings->add(new admin_setting_configstoredfile('assignsubmission_ilsp/visualimpairment_cover',
         get_string('assignsubmission_ilsp_visualimpairment_cover', 'assignsubmission_ilsp'),
         get_string('assignsubmission_ilsp_visualimpairment_cover_desc', 'assignsubmission_ilsp'), 'ilsp_coversheets',
-        ILSP_COVERSHEETS_VISUALIMPAIRMENT, array('maxfiles' => 1, 'accepted_types' => array('.pdf'))));
+        ILSP_COVERSHEETS_VISUALIMPAIRMENT, ['maxfiles' => 1, 'accepted_types' => ['.pdf']]));
 
 // Assessment ILSP Public Name.
 $settings->add(new admin_setting_heading('assignsubmission_ilsp_name_header',

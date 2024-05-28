@@ -14,8 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * ILSP assignment submission plugin mobile app output.
+ *
+ * @package assignsubmission_ilsp
+ * @copyright 2022 Lancaster University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 namespace assignsubmission_ilsp\output;
 
+/**
+ * Mobile output class for ILSP assignment submission plugin.
+ */
 class mobile {
 
     /**
@@ -24,19 +35,19 @@ class mobile {
      * @param array $args Arguments (empty)
      * @return array Array with information required by app
      */
-    public static function assignsubmission_ilsp_view(array $args) : array {
+    public static function assignsubmission_ilsp_view(array $args): array {
         global $CFG, $OUTPUT;
 
         return [
             'templates' => [
                 [
                     'id' => 'main',
-                    'html' => $OUTPUT->render_from_template('assignsubmission_ilsp/mobile_view_ilsp', null),
+                    'html' => $OUTPUT->render_from_template('assignsubmission_ilsp/mobile_view_ilsp', []),
                 ],
             ],
             'javascript' => file_get_contents($CFG->dirroot . '/mod/assign/submission/ilsp/appjs/mobile_init.js'),
             'otherdata' => '',
-            'files' => []
+            'files' => [],
         ];
     }
 

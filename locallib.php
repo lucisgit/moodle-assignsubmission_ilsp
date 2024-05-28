@@ -15,9 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains the definition for the library class for ilsp submission plugin
- *
- * This class provides all the functionality for the new assign module.
+ * This file contains the definition for the library class for ILSP submission plugin.
  *
  * @package assignsubmission_ilsp
  * @copyright 2019 Lancaster University
@@ -31,6 +29,9 @@ require_once($CFG->dirroot . '/mod/assign/submission/ilsp/renderable.php');
 require_once($CFG->dirroot . '/mod/assign/submission/ilsp/lib.php');
 require_once($CFG->dirroot . '/user/lib.php');
 
+/**
+ * ILSP assignment submission plugin class definition.
+ */
 class assign_submission_ilsp extends assign_submission_plugin {
 
     /**
@@ -84,7 +85,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return array
      */
     private function get_edit_options() {
-        $editoroptions = array();
+        $editoroptions = [];
         return $editoroptions;
     }
 
@@ -107,11 +108,11 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return array An array of field names and descriptions. (name=>description, ...)
      */
     public function get_editor_fields() {
-        return array('ilsp' => get_string('pluginname', 'assignsubmission_ilsp'));
+        return ['ilsp' => get_string('pluginname', 'assignsubmission_ilsp')];
     }
 
     /**
-     * Load the submission object from it's id.
+     * Load the submission object from its id.
      *
      * @param int $submissionid The id of the submission we want
      * @return stdClass The submission
@@ -119,7 +120,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
     protected function get_submission($submissionid) {
         global $DB;
 
-        $params = array('assignment' => $this->assignment->get_instance()->id, 'id' => $submissionid);
+        $params = ['assignment' => $this->assignment->get_instance()->id, 'id' => $submissionid];
         return $DB->get_record('assign_submission', $params, '*', MUST_EXIST);
     }
 
@@ -134,7 +135,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
     public function get_editor_text($name, $submissionid) {
         // Get the submission back so we can get the user.
         $submission = $this->get_submission($submissionid);
-        $user = user_get_users_by_id(array($submission->userid))[$submission->userid];
+        $user = user_get_users_by_id([$submission->userid])[$submission->userid];
 
         // Get the valid ilsps and map to their names.
         $ilsps = $this->get_ilsp($user);
@@ -157,7 +158,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
     }
 
     /**
-     * Internal function - creates htmls structure suitable for YUI tree.
+     * Internal function - creates html structure suitable for YUI tree.
      *
      * @param array $dir
      * @return string
@@ -192,7 +193,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
         $html = '';
 
         // Get users to get ilsps.
-        $user = user_get_users_by_id(array($submission->userid))[$submission->userid];
+        $user = user_get_users_by_id([$submission->userid])[$submission->userid];
         $ilsps = $this->get_ilsp($user);
         $ilspfiles = new ilsp_files($ilsps);
         $hasilsps = count($ilsps) > 0;
@@ -217,7 +218,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @throws coding_exception
      * @throws dml_exception
      */
-    protected function get_ilsp ($user) {
+    protected function get_ilsp($user) {
         $this->generate_coversheets();
         $ilsps = $this->coversheets;
 
@@ -432,8 +433,9 @@ class assign_submission_ilsp extends assign_submission_plugin {
      * @return array - An array of fileareas (keys) and descriptions (values)
      */
     public function get_file_areas() {
-        return array('ilsp_coversheets' => $this->get_name());
+        return ['ilsp_coversheets' => $this->get_name()];
     }
+
 }
 
 
