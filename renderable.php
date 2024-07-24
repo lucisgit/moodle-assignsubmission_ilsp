@@ -32,21 +32,18 @@
 class ilsp_files implements renderable {
 
     /** @var context $context */
-    public $context;
-    /** @var string $context */
-    public $dir;
+    public context $context;
+    /** @var array $dir */
+    public array $dir;
     /** @var stdClass $cm course module */
-    public $cm;
+    public stdClass $cm;
     /** @var stdClass $course */
-    public $course;
+    public stdClass $course;
 
     /**
      * The constructor.
      *
-     * @param context $context
-     * @param int $sid
-     * @param string $filearea
-     * @param string $component
+     * @param $ilsps
      */
     public function __construct($ilsps) {
         GLOBAL $CFG;

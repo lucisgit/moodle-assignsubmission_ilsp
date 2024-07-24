@@ -40,6 +40,11 @@ class assign_submission_ilsp extends assign_submission_plugin {
     protected $coversheets = [];
 
     /**
+     * @var string
+     */
+    private string $htmlid;
+
+    /**
      * Get the name of the ilsp submission plugin
      * @return string
      */
