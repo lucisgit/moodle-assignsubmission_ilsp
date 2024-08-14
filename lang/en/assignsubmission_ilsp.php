@@ -31,6 +31,7 @@ $string['eventassessableuploaded'] = 'An ILSP coversheet has been uploaded.';
 $string['nosubmission'] = 'Nothing has been submitted for this assignment';
 $string['ilsp'] = 'ILSP coversheet';
 $string['ilspfilename'] = 'ilsp.html';
+$string['ilsps'] = 'ILSPs';
 $string['ilspsubmission'] = 'Allow ILSP submission';
 $string['pluginname'] = 'ILSP submissions';
 $string['privacy:metadata'] = 'The ILSP submission plugin does not store any personal data';

@@ -145,7 +145,7 @@ class assign_submission_ilsp extends assign_submission_plugin {
         // Get the valid ilsps and map to their names.
         $ilsps = $this->get_ilsp($user);
         $ilsps = array_map(function ($ilsps) {
-                return $ilsps['name'];
+            return $ilsps['name'];
         }, $ilsps);
 
         return implode(', ', $ilsps);
@@ -163,27 +163,21 @@ class assign_submission_ilsp extends assign_submission_plugin {
     }
 
     /**
-     * Internal function - creates html structure suitable for YUI tree.
+     * Returns an array of links to the given list of named files.
      *
-     * @param array $dir
-     * @return string
+     * @param array $files Files keyed by display name
+     * @return array Links to download the files
      */
-    protected function htmllize_tree($dir) {
-        if (empty($dir['files'])) {
-            return '';
+    protected function link_files($files) {
+        $links = [];
+
+        foreach ($files as $name => $file) {
+            $url = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(),
+                $file->get_itemid(), $file->get_filepath(), $file->get_filename());
+            $links[] = html_writer::link($url, $name);
         }
 
-        // Build a ul of the file list (not really a tree).
-        $result = '<ul>';
-        foreach ($dir['files'] as $file) {
-            $result .= '<li>' .
-                '<div>' . ' ' .
-                $file->fileurl . ' ' . '</div>' .
-                '</li>';
-        }
-
-        $result .= '</ul>';
-        return $result;
+        return $links;
     }
 
      /**
@@ -195,23 +189,28 @@ class assign_submission_ilsp extends assign_submission_plugin {
       */
     public function view_summary(stdClass $submission, &$showviewlink) {
         global $PAGE;
-        $html = '';
 
         // Get users to get ilsps.
         $user = user_get_users_by_id([$submission->userid])[$submission->userid];
         $ilsps = $this->get_ilsp($user);
-        $ilspfiles = new ilsp_files($ilsps);
-        $hasilsps = count($ilsps) > 0;
+        if (empty($ilsps)) {
+            return '';
+        }
+
+        $html = '';
 
         // Put a header on the grading panel page.
-        if ($PAGE->pagetype == 'mod-assign-gradingpanel' && $hasilsps) {
-            $html .= '<h3>ILSPs</h3>';
-            $html .= '<p>'.get_string('assignsubmission_ilsp_description', 'assignsubmission_ilsp').'</p>';
+        if ($PAGE->pagetype == 'mod-assign-gradingpanel') {
+            $html .= html_writer::tag('h3', get_string('ilsps', 'assignsubmission_ilsp'));
+            $html .= html_writer::tag('p', get_string('assignsubmission_ilsp_description', 'assignsubmission_ilsp'));
         }
+
+        $ilspfiles = new ilsp_files($ilsps);
         $this->htmlid = html_writer::random_id('assign_ilsp');
-        $html .= '<div id="'.$this->htmlid.'">';
-        $html .= $this->htmllize_tree($ilspfiles->dir);
-        $html .= '</div>';
+        $html .= html_writer::start_div('', ['id' => $this->htmlid]);
+        $html .= html_writer::alist($this->link_files($ilspfiles->files));
+        $html .= html_writer::end_div();
+
         return $html;
     }
 
